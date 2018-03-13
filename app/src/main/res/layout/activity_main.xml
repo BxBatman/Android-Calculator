@@ -22,7 +22,8 @@
             android:id="@+id/simple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Simple" />
+            android:text="Simple"
+            android:onClick="simpleStart"/>
 
         <Button
             android:id="@+id/advanced"
