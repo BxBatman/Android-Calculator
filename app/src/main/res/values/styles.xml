@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="OperationButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorAccent">#538EA6</item>
+    </style>
+
 </resources>
