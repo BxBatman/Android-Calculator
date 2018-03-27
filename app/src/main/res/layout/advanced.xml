@@ -19,7 +19,8 @@
             android:inputType="numberDecimal"
             android:minHeight="40dp"
             android:textAlignment="textEnd"
-            android:textSize="35dp" />
+            android:textSize="35dp"
+            android:textColor="#607D8B"/>
 
 
         <LinearLayout
