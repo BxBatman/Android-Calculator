@@ -29,4 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,Simple.class);
         startActivity(intent);
     }
+
+    public void advancedStart(View view){
+        Intent intent = new Intent(this,Advanced.class);
+        startActivity(intent);
+    }
 }

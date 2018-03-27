@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class Simple extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple);
-        textView = (TextView)findViewById(R.id.summary);
+        textView = (TextView) findViewById(R.id.textView);
         one = (Button)findViewById(R.id.one);
         two = (Button)findViewById(R.id.two);
         three = (Button)findViewById(R.id.three);
@@ -81,7 +82,7 @@ public class Simple extends AppCompatActivity {
     }
 
     public void addComa(View view){
-        if(textView.getText() != ""){
+        if(!textView.getText().equals("") ){
             textView.setText(textView.getText()+".");
         }
         coma.setEnabled(false);
