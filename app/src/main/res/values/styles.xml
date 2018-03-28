@@ -9,7 +9,7 @@
     </style>
 
 
-    <style name="OperationButton" parent="Widget.AppCompat.Button.Colored">
+    <style name="OperationButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="colorAccent">#538EA6</item>
     </style>
 

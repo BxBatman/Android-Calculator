@@ -10,13 +10,13 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:id="@+id/textView"
@@ -28,8 +28,9 @@
             android:minHeight="40dp"
             android:textAlignment="textEnd"
             android:textColor="#607D8B"
-            android:textSize="35dp"
-            android:freezesText="true"/>
+            android:layout_weight="2"
+            android:freezesText="true"
+            />
 
 
         <LinearLayout
@@ -37,13 +38,16 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="5sp"
             android:gravity="bottom"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="2"
+            >
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/bksp"
@@ -61,24 +65,25 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
                     android:onClick="clear"
-                    android:backgroundTint="@color/red"
+                    android:text="C"
                     android:textColor="@color/white"
-                    android:text="C" />
+                    android:backgroundTint="@color/red"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="symbolChange"
+                    android:backgroundTint="@color/green"
                     android:textColor="@color/white"
-                    android:text="\u00B1"
-                    android:backgroundTint="@color/green"/>
+                    android:text="\u00B1" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/sin"
@@ -115,7 +120,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/sqrt"
@@ -154,7 +160,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/seven"
@@ -194,7 +201,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/four"
@@ -234,7 +242,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/one"
@@ -273,7 +282,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <Button
                     android:id="@+id/zero"

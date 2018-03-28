@@ -51,6 +51,7 @@ public class Simple extends AppCompatActivity {
         textView.setText("");
         firstNumber = "";
         secondNumber = "";
+        isMinus = false;
     }
 
     public void symbolChange(View view){
@@ -59,18 +60,22 @@ public class Simple extends AppCompatActivity {
             isMinus = true;
         }else if(isMinus == true) {
             String text = textView.getText().toString();
-            if(text != "" && text !=null && text.length() > 0 || text.substring(0,0) == "-"){
+            if(text != "" && text !=null && text.length() > 0 || text.substring(0,0) == "-" ){
                 text = text.substring(1,text.length());
                 textView.setText(text);
 
+            }else if(text == "0"){
+                textView.setText("");
             }
             isMinus = false;
         }
     }
 
-    public void addComa(View view){
-        if(!textView.getText().equals("") ){
-            textView.setText(textView.getText()+".");
+    public void addComa(View view) {
+        if(textView.getText().toString().equals("")){
+            textView.setText("0"+".");
+        }else{
+            textView.setText(textView.getText() + ".");
         }
         coma.setEnabled(false);
     }
@@ -79,33 +84,71 @@ public class Simple extends AppCompatActivity {
         double equal = 0;
 
         if(firstNumber.equals("")){
-        }else {
+            Context context = getApplicationContext();
+            CharSequence text = "You didn't give the other argument!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else {
             secondNumber = textView.getText().toString();
+
             if (currentOperation == "sum") {
-                equal = Double.parseDouble(firstNumber) + Double.parseDouble(secondNumber);
+
+                if(!secondNumber.equals("")) {
+                    equal = Double.parseDouble(firstNumber) + Double.parseDouble(secondNumber);
+                }else {
+                    equal = Double.parseDouble(firstNumber) + Double.parseDouble(firstNumber);
+                }
+
                 coma.setEnabled(false);
                 textView.setText(Double.toString(equal));
+
             } else if (currentOperation == "multiplication") {
-                equal = Double.parseDouble(firstNumber) * Double.parseDouble(secondNumber);
+
+                if(!secondNumber.equals("")) {
+                    equal = Double.parseDouble(firstNumber) * Double.parseDouble(secondNumber);
+                }else {
+                    equal = Double.parseDouble(firstNumber) * Double.parseDouble(firstNumber);
+                }
+
                 coma.setEnabled(false);
                 textView.setText(Double.toString(equal));
+
             } else if (currentOperation == "subtraction") {
-                equal = Double.parseDouble(firstNumber) - Double.parseDouble(secondNumber);
+
+                if(!secondNumber.equals("")) {
+                    equal = Double.parseDouble(firstNumber) - Double.parseDouble(secondNumber);
+                }else{
+                    equal = Double.parseDouble(firstNumber) - Double.parseDouble(firstNumber);
+                }
                 coma.setEnabled(false);
                 textView.setText(Double.toString(equal));
+
+
             } else if (currentOperation == "division") {
-                if (Double.parseDouble(secondNumber) == 0) {
+                if(secondNumber.equals("")){
+                    equal = Double.parseDouble(firstNumber) / Double.parseDouble(firstNumber);
+                    coma.setEnabled(false);
+                    textView.setText(Double.toString(equal));
+                }
+                else if(Double.parseDouble(secondNumber) == 0) {
                     Context context = getApplicationContext();
                     CharSequence text = "You can't divide by zero!";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 } else {
+
                     equal = Double.parseDouble(firstNumber) / Double.parseDouble(secondNumber);
+
                     coma.setEnabled(false);
                     textView.setText(Double.toString(equal));
                 }
             }
+        }
+        if(equal<0){
+            isMinus = true;
         }
         operationFlag = false;
     }
@@ -118,6 +161,7 @@ public class Simple extends AppCompatActivity {
             currentOperation = "sum";
             textView.setText("");
         }else {
+            isMinus = false;
             operationFlag = true;
             currentOperation = "sum";
             firstNumber = textView.getText().toString();
@@ -131,6 +175,7 @@ public class Simple extends AppCompatActivity {
             currentOperation="division";
             textView.setText("");
         }else {
+            isMinus = false;
             operationFlag = true;
             currentOperation = "division";
             firstNumber = textView.getText().toString();
@@ -144,6 +189,7 @@ public class Simple extends AppCompatActivity {
             currentOperation="multiplication";
             textView.setText("");
         }else {
+            isMinus = false;
             operationFlag = true;
             currentOperation = "multiplication";
             firstNumber = textView.getText().toString();
@@ -157,6 +203,7 @@ public class Simple extends AppCompatActivity {
             currentOperation = "subtraction";
             textView.setText("");
         }else {
+            isMinus = false;
             operationFlag = true;
             currentOperation = "subtraction";
             firstNumber = textView.getText().toString();

@@ -21,6 +21,7 @@
             android:inputType="numberDecimal"
             android:textAlignment="textEnd"
             android:textColor="#607D8B"
+            android:freezesText="true"
             />
 
 
@@ -43,6 +44,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="backspace"
+                    android:backgroundTint="@color/green"
+                    android:textColor="@color/white"
                     android:text="Bksp" />
 
                 <Button
@@ -51,13 +54,17 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
                     android:onClick="clear"
-                    android:text="C" />
+                    android:text="C"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/red"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="symbolChange"
                     android:text="\u00B1"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/green"
                     />
             </LinearLayout>
 
@@ -90,12 +97,15 @@
                     android:onClick="addNumber_9"
                     android:text="9"
                     />
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="division"
                     android:text="/"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/colorButton"
                     />
             </LinearLayout>
 
@@ -111,7 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="addNumber_4"
-                    android:text="4" />
+                    android:text="4"
+                    />
 
                 <Button
                     android:id="@+id/five"
@@ -134,6 +145,8 @@
                     android:layout_weight="1"
                     android:onClick="multiplication"
                     android:text="*"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/colorButton"
                     />
             </LinearLayout>
 
@@ -172,6 +185,8 @@
                     android:layout_weight="1"
                     android:onClick="subtraction"
                     android:text="-"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/colorButton"
                     />
             </LinearLayout>
 
@@ -195,19 +210,23 @@
                     android:layout_weight="1"
                     android:onClick="addComa"
                     android:text="." />
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="equal"
                     android:text="="
-                    />
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/equalButton"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="sum"
                     android:text="+"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/colorButton"
                     />
             </LinearLayout>
 
