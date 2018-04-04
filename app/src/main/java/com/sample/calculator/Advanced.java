@@ -67,7 +67,9 @@ public class Advanced extends AppCompatActivity {
         textView.setText("");
         firstNumber = "";
         secondNumber = "";
+        temp = "";
         isMinus = false;
+        equal = 0;
     }
 
     public void symbolChange(View view) {
@@ -275,6 +277,7 @@ public class Advanced extends AppCompatActivity {
         coma.setEnabled(true);
         if (operationFlag == true) {
             currentOperation = "multiplication";
+            textView.setText("");
         } else {
             isMinus = false;
             operationFlag = true;
@@ -287,6 +290,8 @@ public class Advanced extends AppCompatActivity {
     public void subtraction(View view) {
         coma.setEnabled(true);
         if (operationFlag == true) {
+            currentOperation="subtraction";
+            textView.setText("");
         } else {
             isMinus = false;
             operationFlag = true;
