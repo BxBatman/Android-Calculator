@@ -34,6 +34,9 @@ public class Simple extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putString("firstNumber",firstNumber);
         outState.putString("currentOperation",currentOperation);
+        outState.putString("temp",temp);
+        outState.putString("secondNumber",secondNumber);
+        outState.putBoolean("operationFlag",operationFlag);
 
     }
 
@@ -45,6 +48,9 @@ public class Simple extends AppCompatActivity {
         if(savedInstanceState != null) {
             firstNumber = savedInstanceState.getString("firstNumber");
             currentOperation = savedInstanceState.getString("currentOperation");
+            temp = savedInstanceState.getString("temp");
+            secondNumber = savedInstanceState.getString("secondNumber");
+            operationFlag = savedInstanceState.getBoolean("operationFlag");
         }
 
         setContentView(R.layout.simple);
