@@ -66,6 +66,7 @@ public class Advanced extends AppCompatActivity {
             text = text.substring(0, text.length() - 1);
             textView.setText(text);
         }
+        comaCheck();
     }
 
     public void clear(View view) {
@@ -232,169 +233,93 @@ public class Advanced extends AppCompatActivity {
     }
 
 
+    public void comaCheck(){
+        String checkText = textView.getText().toString();
+        if(checkText.indexOf('.') > -1){
+            coma.setEnabled(false);
+        }else {
+            coma.setEnabled(true);
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void sum(View view) {
+    public void setOperation(String currentOperation){
         coma.setEnabled(true);
-        if (operationFlag == true) {
-            currentOperation = "sum";
+        if(operationFlag == true) {
+            this.currentOperation = currentOperation ;
             textView.setText("");
-        } else {
+        }else {
             isMinus = false;
             operationFlag = true;
-            currentOperation = "sum";
+            this.currentOperation = currentOperation;
             firstNumber = textView.getText().toString();
             textView.setText("");
         }
     }
 
-    public void division(View view) {
-        coma.setEnabled(true);
-        if (operationFlag == true) {
-            currentOperation = "division";
-            textView.setText("");
-        } else {
-            isMinus = false;
-            operationFlag = true;
-            currentOperation = "division";
-            firstNumber = textView.getText().toString();
-            textView.setText("");
-        }
+    public void sum(View view){
+        setOperation("sum");
     }
 
-    public void multiplication(View view) {
-        coma.setEnabled(true);
-        if (operationFlag == true) {
-            currentOperation = "multiplication";
-            textView.setText("");
-        } else {
-            isMinus = false;
-            operationFlag = true;
-            currentOperation = "multiplication";
-            firstNumber = textView.getText().toString();
-            textView.setText("");
-        }
+    public void division(View view){
+        setOperation("division");
     }
 
-    public void subtraction(View view) {
-        coma.setEnabled(true);
-        if (operationFlag == true) {
-            currentOperation="subtraction";
-            textView.setText("");
-        } else {
-            isMinus = false;
-            operationFlag = true;
-            currentOperation = "subtraction";
-            firstNumber = textView.getText().toString();
-            textView.setText("");
-        }
+    public void multiplication(View view){
+        setOperation("multiplication");
     }
 
-    public void addNumber_0(View view) {
-        textView.setText(textView.getText() + "0");
-        if (oneComaFlag == true) {
-        } else {
+    public void subtraction(View view){
+        setOperation("subtraction");
+    }
+
+    public void setNumber(String number){
+        textView.setText(textView.getText()+number);
+        if(oneComaFlag == true){
+        }else {
             coma.setEnabled(true);
             oneComaFlag = true;
         }
     }
 
-    public void addNumber_1(View view) {
-        textView.setText(textView.getText() + "1");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+
+    //numbers
+    public void addNumber_0(View view){
+        setNumber("0");
     }
 
-    public void addNumber_2(View view) {
-        textView.setText(textView.getText() + "2");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_1(View view){
+        setNumber("1");
     }
 
-    public void addNumber_3(View view) {
-        textView.setText(textView.getText() + "3");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_2(View view){
+        setNumber("2");
     }
 
-    public void addNumber_4(View view) {
-        textView.setText(textView.getText() + "4");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_3(View view){
+        setNumber("3");
     }
 
-    public void addNumber_5(View view) {
-        textView.setText(textView.getText() + "5");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_4(View view){
+        setNumber("4");
+    }
+    public void addNumber_5(View view){
+        setNumber("5");
     }
 
-    public void addNumber_6(View view) {
-        textView.setText(textView.getText() + "6");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_6(View view){
+        setNumber("6");
     }
 
-    public void addNumber_7(View view) {
-        textView.setText(textView.getText() + "7");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_7(View view){
+        setNumber("7");
     }
 
-    public void addNumber_8(View view) {
-        textView.setText(textView.getText() + "8");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_8(View view){
+        setNumber("8");
     }
 
-    public void addNumber_9(View view) {
-        textView.setText(textView.getText() + "9");
-        if (oneComaFlag == true) {
-        } else {
-            coma.setEnabled(true);
-            oneComaFlag = true;
-        }
+    public void addNumber_9(View view){
+        setNumber("9");
     }
 
 
@@ -414,6 +339,7 @@ public class Advanced extends AppCompatActivity {
             result = Math.log10(result);
             textView.setText(Double.toString(result));
         }
+        comaCheck();
     }
 
     public void powerToTwo(View view) {
@@ -429,6 +355,7 @@ public class Advanced extends AppCompatActivity {
             result = Math.pow(result, 2);
             textView.setText(Double.toString(result));
         }
+        comaCheck();
     }
 
 
@@ -445,6 +372,7 @@ public class Advanced extends AppCompatActivity {
             result = Math.sqrt(result);
             textView.setText(Double.toString(result));
         }
+        comaCheck();
     }
 
 
@@ -461,6 +389,7 @@ public class Advanced extends AppCompatActivity {
             result = Math.sin(result);
             textView.setText(Double.toString(result));
         }
+        comaCheck();
     }
 
 
@@ -477,7 +406,9 @@ public class Advanced extends AppCompatActivity {
             double result = Double.parseDouble(firstNumber);
             result = Math.cos(result);
             textView.setText(Double.toString(result));
+            comaCheck();
         }
+
     }
 
 
@@ -495,6 +426,7 @@ public class Advanced extends AppCompatActivity {
             result = Math.tan(result);
             textView.setText(Double.toString(result));
         }
+        comaCheck();
     }
 
 
@@ -512,6 +444,7 @@ public class Advanced extends AppCompatActivity {
             result = Math.log(result);
             textView.setText(Double.toString(result));
         }
+        comaCheck();
     }
 
 
@@ -533,6 +466,7 @@ public class Advanced extends AppCompatActivity {
                 textView.setText("");
             }
         }
+        comaCheck();
     }
 
     public void showToast() {
