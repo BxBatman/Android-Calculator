@@ -32,9 +32,9 @@ public class Advanced extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putString("firstNumber", firstNumber);
         outState.putString("currentOperation", currentOperation);
-        outState.putString("temp",temp);
-        outState.putString("secondNumber",secondNumber);
-        outState.putBoolean("operationFlag",operationFlag);
+        outState.putString("temp", temp);
+        outState.putString("secondNumber", secondNumber);
+        outState.putBoolean("operationFlag", operationFlag);
 
     }
 
@@ -55,7 +55,7 @@ public class Advanced extends AppCompatActivity {
         setContentView(R.layout.advanced);
         textView = (TextView) findViewById(R.id.textView);
         coma = (Button) findViewById(R.id.coma);
-        temp="";
+        temp = "";
         textView.setText("");
 
     }
@@ -183,11 +183,7 @@ public class Advanced extends AppCompatActivity {
                             coma.setEnabled(false);
                             textView.setText(Double.toString(equal));
                         } else {
-                            Context context = getApplicationContext();
-                            CharSequence text = "You can't divide by zero!";
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
+                            showToastForZero();
                         }
                     }
 
@@ -209,17 +205,17 @@ public class Advanced extends AppCompatActivity {
                 } else {
                     showToast();
                 }
-            }else if(currentOperation == "log"){
+            } else if (currentOperation == "log") {
                 log(view);
-            }else if(currentOperation =="sin"){
+            } else if (currentOperation == "sin") {
                 sin(view);
-            }else if(currentOperation=="cos"){
+            } else if (currentOperation == "cos") {
                 cos(view);
-            }else if(currentOperation == "tan"){
+            } else if (currentOperation == "tan") {
                 tan(view);
-            }else if(currentOperation == "ln"){
+            } else if (currentOperation == "ln") {
                 ln(view);
-            }else if (currentOperation == "sqrt"){
+            } else if (currentOperation == "sqrt") {
                 powerToTwo(view);
             }
 
@@ -233,21 +229,54 @@ public class Advanced extends AppCompatActivity {
     }
 
 
-    public void comaCheck(){
+    public void comaCheck() {
         String checkText = textView.getText().toString();
-        if(checkText.indexOf('.') > -1){
+        if (checkText.indexOf('.') > -1) {
             coma.setEnabled(false);
-        }else {
+        } else {
             coma.setEnabled(true);
         }
     }
 
-    public void setOperation(String currentOperation){
+
+    public void threeArguments(String currentOperation) {
+        if (firstNumber == null) {
+            firstNumber = "0";
+        } else if (firstNumber.isEmpty()) {
+            firstNumber = "0";
+        }
+        double fNumber = Double.parseDouble(firstNumber);
+
+        switch (currentOperation) {
+
+            case "sum":
+                fNumber += Double.parseDouble(textView.getText().toString());
+                break;
+            case "multiplication":
+                fNumber *= Double.parseDouble(textView.getText().toString());
+                break;
+            case "subtraction":
+                fNumber -= Double.parseDouble(textView.getText().toString());
+                break;
+            case "division":
+                if (Double.parseDouble(textView.getText().toString()) == 0) {
+                    showToastForZero();
+                } else {
+                    fNumber /= Double.parseDouble(textView.getText().toString());
+                }
+                break;
+        }
+
+        firstNumber = String.valueOf(fNumber);
+    }
+
+
+    public void setOperation(String currentOperation) {
         coma.setEnabled(true);
-        if(operationFlag == true) {
-            this.currentOperation = currentOperation ;
+        if (operationFlag == true) {
+            this.currentOperation = currentOperation;
             textView.setText("");
-        }else {
+        } else {
             isMinus = false;
             operationFlag = true;
             this.currentOperation = currentOperation;
@@ -256,26 +285,38 @@ public class Advanced extends AppCompatActivity {
         }
     }
 
-    public void sum(View view){
+    public void sum(View view) {
+        if (currentOperation != null) {
+            threeArguments(currentOperation);
+        }
         setOperation("sum");
     }
 
-    public void division(View view){
+    public void division(View view) {
+        if (currentOperation != null) {
+            threeArguments(currentOperation);
+        }
         setOperation("division");
     }
 
-    public void multiplication(View view){
+    public void multiplication(View view) {
+        if (currentOperation != null) {
+            threeArguments(currentOperation);
+        }
         setOperation("multiplication");
     }
 
-    public void subtraction(View view){
+    public void subtraction(View view) {
+        if (currentOperation != null) {
+            threeArguments(currentOperation);
+        }
         setOperation("subtraction");
     }
 
-    public void setNumber(String number){
-        textView.setText(textView.getText()+number);
-        if(oneComaFlag == true){
-        }else {
+    public void setNumber(String number) {
+        textView.setText(textView.getText() + number);
+        if (oneComaFlag == true) {
+        } else {
             coma.setEnabled(true);
             oneComaFlag = true;
         }
@@ -283,42 +324,43 @@ public class Advanced extends AppCompatActivity {
 
 
     //numbers
-    public void addNumber_0(View view){
+    public void addNumber_0(View view) {
         setNumber("0");
     }
 
-    public void addNumber_1(View view){
+    public void addNumber_1(View view) {
         setNumber("1");
     }
 
-    public void addNumber_2(View view){
+    public void addNumber_2(View view) {
         setNumber("2");
     }
 
-    public void addNumber_3(View view){
+    public void addNumber_3(View view) {
         setNumber("3");
     }
 
-    public void addNumber_4(View view){
+    public void addNumber_4(View view) {
         setNumber("4");
     }
-    public void addNumber_5(View view){
+
+    public void addNumber_5(View view) {
         setNumber("5");
     }
 
-    public void addNumber_6(View view){
+    public void addNumber_6(View view) {
         setNumber("6");
     }
 
-    public void addNumber_7(View view){
+    public void addNumber_7(View view) {
         setNumber("7");
     }
 
-    public void addNumber_8(View view){
+    public void addNumber_8(View view) {
         setNumber("8");
     }
 
-    public void addNumber_9(View view){
+    public void addNumber_9(View view) {
         setNumber("9");
     }
 
@@ -326,7 +368,8 @@ public class Advanced extends AppCompatActivity {
     //advanced mode
 
 
-    public void log(View view) {
+    public void setOperationAdvanced(String operationAdvanced) {
+
         firstNumber = textView.getText().toString();
         if (firstNumber == null) {
             showToast();
@@ -334,117 +377,76 @@ public class Advanced extends AppCompatActivity {
             showToast();
         } else {
             coma.setEnabled(true);
-            currentOperation="log";
             double result = Double.parseDouble(firstNumber);
-            result = Math.log10(result);
+            switch (operationAdvanced) {
+                case "log":
+                    result = Math.log10(result);
+                    break;
+                case "ln":
+                    result = Math.log(result);
+                    break;
+                case "sin":
+                    result = Math.sin(result);
+                    break;
+                case "cos":
+                    result = Math.cos(result);
+                    break;
+                case "powerToTwo":
+                    result = Math.pow(result, 2);
+                    break;
+                case "sqrt":
+                    result = Math.sqrt(result);
+                    break;
+                case "tan":
+                    result = Math.tan(result);
+                    break;
+
+            }
+            currentOperation = operationAdvanced;
             textView.setText(Double.toString(result));
         }
         comaCheck();
     }
 
-    public void powerToTwo(View view) {
-        firstNumber = textView.getText().toString();
-        if (firstNumber == null) {
-            showToast();
-        } else if (firstNumber.equals("")) {
-            showToast();
-        } else {
-            coma.setEnabled(true);
-            currentOperation="powerToTwo";
-            double result = Double.parseDouble(firstNumber);
-            result = Math.pow(result, 2);
-            textView.setText(Double.toString(result));
+
+    public void log(View view) {
+        if (currentOperation != null) {
+            threeArguments(currentOperation);
         }
-        comaCheck();
+        setOperationAdvanced("log");
+    }
+
+    public void powerToTwo(View view) {
+        if (currentOperation != null) {
+            threeArguments(currentOperation);
+        }
+       setOperationAdvanced("powerToTwo");
     }
 
 
     public void sqrt(View view) {
-        firstNumber = textView.getText().toString();
-        if (firstNumber == null) {
-            showToast();
-        } else if (firstNumber.equals("")) {
-            showToast();
-        } else {
-            coma.setEnabled(true);
-            currentOperation="sqrt";
-            double result = Double.parseDouble(firstNumber);
-            result = Math.sqrt(result);
-            textView.setText(Double.toString(result));
-        }
-        comaCheck();
+       setOperationAdvanced("sqrt");
     }
 
 
     public void sin(View view) {
-        firstNumber = textView.getText().toString();
-        if (firstNumber == null) {
-            showToast();
-        } else if (firstNumber.equals("")) {
-            showToast();
-        } else {
-            coma.setEnabled(true);
-            currentOperation="sin";
-            double result = Double.parseDouble(firstNumber);
-            result = Math.sin(result);
-            textView.setText(Double.toString(result));
-        }
-        comaCheck();
+       setOperationAdvanced("sin");
     }
 
 
     public void cos(View view) {
-        firstNumber = textView.getText().toString();
-
-        if (firstNumber == null) {
-            showToast();
-        } else if (firstNumber.equals("")) {
-            showToast();
-        } else {
-            coma.setEnabled(true);
-            currentOperation="cos";
-            double result = Double.parseDouble(firstNumber);
-            result = Math.cos(result);
-            textView.setText(Double.toString(result));
-            comaCheck();
-        }
+        setOperationAdvanced("cos");
 
     }
 
 
     public void tan(View view) {
-        firstNumber = textView.getText().toString();
-
-        if (firstNumber == null) {
-            showToast();
-        } else if (firstNumber.equals("")) {
-            showToast();
-        } else {
-            coma.setEnabled(true);
-            currentOperation="tan";
-            double result = Double.parseDouble(firstNumber);
-            result = Math.tan(result);
-            textView.setText(Double.toString(result));
-        }
-        comaCheck();
+       setOperationAdvanced("tan");
     }
 
 
     public void ln(View view) {
-        firstNumber = textView.getText().toString();
-
-        if (firstNumber == null) {
-            showToast();
-        } else if (firstNumber.equals("")) {
-            showToast();
-        } else {
-            coma.setEnabled(true);
-            currentOperation="ln";
-            double result = Double.parseDouble(firstNumber);
-            result = Math.log(result);
-            textView.setText(Double.toString(result));
-        }
-        comaCheck();
+       setOperationAdvanced("ln");
     }
 
 
@@ -472,6 +474,15 @@ public class Advanced extends AppCompatActivity {
     public void showToast() {
         Context context = getApplicationContext();
         CharSequence text = "You didn't give the other argument!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+
+    public void showToastForZero() {
+        Context context = getApplicationContext();
+        CharSequence text = "You can't divide by zero!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
