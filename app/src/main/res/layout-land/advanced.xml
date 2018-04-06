@@ -25,7 +25,7 @@
             android:layout_marginTop="5sp"
             android:enabled="false"
             android:inputType="numberDecimal"
-            android:minHeight="40dp"
+            android:minHeight="600dp"
             android:textAlignment="textEnd"
             android:textColor="#607D8B"
             android:layout_weight="2"

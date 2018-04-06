@@ -250,19 +250,27 @@ public class Advanced extends AppCompatActivity {
         switch (currentOperation) {
 
             case "sum":
-                fNumber += Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    fNumber += Double.parseDouble(textView.getText().toString());
+                }
                 break;
             case "multiplication":
-                fNumber *= Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    fNumber *= Double.parseDouble(textView.getText().toString());
+                }
                 break;
             case "subtraction":
-                fNumber -= Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    fNumber -= Double.parseDouble(textView.getText().toString());
+                }
                 break;
             case "division":
-                if (Double.parseDouble(textView.getText().toString()) == 0) {
-                    showToastForZero();
-                } else {
-                    fNumber /= Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    if (Double.parseDouble(textView.getText().toString()) == 0) {
+                        showToastForZero();
+                    } else {
+                        fNumber /= Double.parseDouble(textView.getText().toString());
+                    }
                 }
                 break;
         }
@@ -380,10 +388,18 @@ public class Advanced extends AppCompatActivity {
             double result = Double.parseDouble(firstNumber);
             switch (operationAdvanced) {
                 case "log":
-                    result = Math.log10(result);
+                    if (result < 10) {
+                        showToastForNaN();
+                    }else {
+                        result = Math.log10(result);
+                    }
                     break;
                 case "ln":
-                    result = Math.log(result);
+                    if(result < 0){
+                        showToastForNaN();
+                    }else {
+                        result = Math.log(result);
+                    }
                     break;
                 case "sin":
                     result = Math.sin(result);
@@ -395,7 +411,11 @@ public class Advanced extends AppCompatActivity {
                     result = Math.pow(result, 2);
                     break;
                 case "sqrt":
-                    result = Math.sqrt(result);
+                    if(result < 0) {
+                        showToastForNaN();
+                    }else {
+                        result = Math.sqrt(result);
+                    }
                     break;
                 case "tan":
                     result = Math.tan(result);
@@ -483,6 +503,15 @@ public class Advanced extends AppCompatActivity {
     public void showToastForZero() {
         Context context = getApplicationContext();
         CharSequence text = "You can't divide by zero!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+
+    public void showToastForNaN() {
+        Context context = getApplicationContext();
+        CharSequence text = "The number can't be negative";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

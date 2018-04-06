@@ -220,19 +220,27 @@ public class Simple extends AppCompatActivity {
         switch (currentOperation) {
 
             case "sum":
-                fNumber += Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    fNumber += Double.parseDouble(textView.getText().toString());
+                }
                 break;
             case "multiplication":
-                fNumber *= Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    fNumber *= Double.parseDouble(textView.getText().toString());
+                }
                 break;
             case "subtraction":
-                fNumber -= Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    fNumber -= Double.parseDouble(textView.getText().toString());
+                }
                 break;
             case "division":
-                if (Double.parseDouble(textView.getText().toString()) == 0) {
-                    showToastForZero();
-                } else {
-                    fNumber /= Double.parseDouble(textView.getText().toString());
+                if(!textView.getText().toString().isEmpty()) {
+                    if (Double.parseDouble(textView.getText().toString()) == 0) {
+                        showToastForZero();
+                    } else {
+                        fNumber /= Double.parseDouble(textView.getText().toString());
+                    }
                 }
                 break;
         }
