@@ -5,4 +5,4 @@ Kalkulator na androida, wersja simple oraz advanced.
 
 ![alt snake](https://i.imgur.com/IHO8bJ9l.png)
 
-![alt snake](https://i.imgur.com/IHO8bJ9l.png)
+![alt snake](https://i.imgur.com/yQqvUkBl.png)
